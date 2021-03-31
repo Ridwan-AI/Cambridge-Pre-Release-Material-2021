@@ -24,18 +24,19 @@ print("")
 # Task 2
 
 # Purchasing tickets
-
+# print("\033[1;32;40mBright Green\033[0m\n")
 wants = "abc"
 numoftickets = 0
 validcheck = True
 # wants = input("Do you want to purchase some train tickets [Yes/No]?\n")
-
+wantsdeparttime = "100:1000"
 while True:
-    wants = input("Do you want to purchase some train tickets [Yes/No]?\n")
+    wants = input("\nDo you want to purchase some train tickets [Yes/No]?\n")
+    wants = wants.strip() #Get rid of whitespaces (tabs and spaces) to prevent problems with Yes detection
     if (wants[0] == "Y" or wants[0] == "y"):
             #Wants tickets
             numoftickets = input("How many train tickets do you want to purchase?\n")
-            
+            numoftickets = numoftickets.strip() #Get rid of whitespaces (tabs and spaces) to prevent problems with Yes detection
             #Validation that number was entered
             if (numoftickets.isnumeric()):
                 numoftickets = int(numoftickets)
@@ -46,11 +47,66 @@ while True:
 
             if (numoftickets > 1):
                 #Group
-                print ("Alright giving you a group ticket.")
+                print ("Group ticket selected")
+                #Departure time
+                wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                #Validate that tickets are available for departure
+                wantsdeparttime = wantsdeparttime.strip()
+                if (wantsdeparttime == "09:00" and passenger_left_departure[0]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "11:00" and passenger_left_departure[1]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "13:00" and passenger_left_departure[2]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "15:00" and passenger_left_departure[3]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                else:
+                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                #Return time
+                wantsreturntime = input("When do you want to return from the top of the mountain?\n")
+                wantsreturntime = wantsreturntime.strip()
+                #Validate that tickets are available for return
+                if (wantsreturntime == "10:00" and passenger_left_return[0]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "12:00" and passenger_left_return[1]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "14:00" and passenger_left_return[2]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "16:00" and passenger_left_return[3]>=numoftickets):
+                    print ("\033[1;32Departure tickets successfully purchased\033[0m")
+                else:
+                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
                 
             elif (numoftickets == 1):
                 #Single
-                print ("Alright giving you a single ticket.")
+                print ("Single ticket selected.")
+                wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                wantsdeparttime = wantsdeparttime.strip()
+                #Validate that tickets are available for departure
+                if (wantsdeparttime == "09:00" and passenger_left_departure[0]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "11:00" and passenger_left_departure[1]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "13:00" and passenger_left_departure[2]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsdeparttime == "15:00" and passenger_left_departure[3]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                else:
+                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                #Return time
+                wantsreturntime = input("When do you want to return from the top of the mountain?\n")
+                wantsreturntime = wantsreturntime.strip()
+                #Validate that tickets are available for return
+                if (wantsreturntime == "10:00" and passenger_left_return[0]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "12:00" and passenger_left_return[1]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "14:00" and passenger_left_return[2]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                elif (wantsreturntime == "16:00" and passenger_left_return[3]>=numoftickets):
+                    print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                else:
+                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
             else:
                 #Validation failed
                 print("Please enter properly.")
@@ -64,5 +120,9 @@ while True:
             validcheck = False
     if (validcheck == True):
         break
+
+
+
+
 #Just a newline to make output look nicer
 print ("")
