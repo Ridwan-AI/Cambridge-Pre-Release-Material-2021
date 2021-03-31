@@ -46,164 +46,193 @@ while (validcheck == True):
                 validcheck = True
                 continue
             
-            #Group
+            ############## Group ##################
             if (numoftickets > 1):    
                 print ("Group ticket selected")
                 #Departure time
-                wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                # wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                # wantsdeparttime = wantsdeparttime.strip()
                 #Validate that tickets are available for departure
-                wantsdeparttime = wantsdeparttime.strip()
-                if (wantsdeparttime == "09:00" and passenger_left_departure[0] != "Closed"):
-                    if (passenger_left_departure[0]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[0] = passenger_left_departure[0] - numoftickets
-                        totalmoney_departure[0] = totalmoney_departure[0] + numoftickets*25
-                        if (passenger_left_departure[0] == 0):
-                            passenger_left_departure[0] = "Closed"
-                elif (wantsdeparttime == "11:00" and passenger_left_departure[1] !="Closed"):
-                    if (passenger_left_departure[1]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[1] = passenger_left_departure[1] - numoftickets
-                        totalmoney_departure[1] = totalmoney_departure[1] + numoftickets*25
-                        if (passenger_left_departure[1] == 0):
-                            passenger_left_departure[1] = "Closed"
-                elif (wantsdeparttime == "13:00" and passenger_left_departure[2] != "Closed"):
-                    if (passenger_left_departure[2]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[2] = passenger_left_departure[2] - numoftickets
-                        totalmoney_departure[2] = totalmoney_departure[2] + numoftickets*25
-                        if (passenger_left_departure[2] == 0):
-                            passenger_left_departure[2] = "Closed"
-                elif (wantsdeparttime == "15:00" and passenger_left_departure[3] != "Closed"):
-                    if (passenger_left_departure[3]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[3] = passenger_left_departure[3] - numoftickets
-                        totalmoney_departure[3] = totalmoney_departure[3] + numoftickets*25
-                        if (passenger_left_departure[3] == 0):
-                            passenger_left_departure[3] = "Closed"
-                else:
-                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                purchasedticket = False
+                while (purchasedticket == False):
+                    wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                    wantsdeparttime = wantsdeparttime.strip()
+                    if (wantsdeparttime == "09:00" and passenger_left_departure[0] != "Closed"):
+                        if (passenger_left_departure[0]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[0] = passenger_left_departure[0] - numoftickets
+                            totalmoney_departure[0] = totalmoney_departure[0] + numoftickets*25
+                            if (passenger_left_departure[0] == 0):
+                                passenger_left_departure[0] = "Closed"
+                    elif (wantsdeparttime == "11:00" and passenger_left_departure[1] !="Closed"):
+                        if (passenger_left_departure[1]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[1] = passenger_left_departure[1] - numoftickets
+                            totalmoney_departure[1] = totalmoney_departure[1] + numoftickets*25
+                            if (passenger_left_departure[1] == 0):
+                                passenger_left_departure[1] = "Closed"
+                    elif (wantsdeparttime == "13:00" and passenger_left_departure[2] != "Closed"):
+                        if (passenger_left_departure[2]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[2] = passenger_left_departure[2] - numoftickets
+                            totalmoney_departure[2] = totalmoney_departure[2] + numoftickets*25
+                            if (passenger_left_departure[2] == 0):
+                                passenger_left_departure[2] = "Closed"
+                    elif (wantsdeparttime == "15:00" and passenger_left_departure[3] != "Closed"):
+                        if (passenger_left_departure[3]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[3] = passenger_left_departure[3] - numoftickets
+                            totalmoney_departure[3] = totalmoney_departure[3] + numoftickets*25
+                            if (passenger_left_departure[3] == 0):
+                                passenger_left_departure[3] = "Closed"
+                    else:
+                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
                 #Return time
-                wantsreturntime = input("When do you want to return from the top of the mountain?\n")
-                wantsreturntime = wantsreturntime.strip()
                 #Validate that tickets are available for return
-                if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed"):
-                    if (passenger_left_return[0]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[0] = passenger_left_return[0] - numoftickets
-                        totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
-                        if (passenger_left_return[0] == 0):
-                            passenger_left_return[0] = "Closed"
-                elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
-                    if (passenger_left_return[1]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[1] = passenger_left_return[1] - numoftickets
-                        totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
-                        if (passenger_left_return[1] == 0):
-                            passenger_left_return[1] = "Closed"
-                elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
-                    if (passenger_left_return[2]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[2] = passenger_left_return[2] - numoftickets
-                        totalmoney_return[2] = totalmoney_return[2] + numoftickets*25
-                        if (passenger_left_return[2] == 0):
-                            passenger_left_return[2] = "Closed"
-                elif (wantsreturntime == "16:00" and passenger_left_return[3] != "Closed"):
-                    if (passenger_left_return[3]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[3] = passenger_left_return[3] - numoftickets
-                        totalmoney_return[3] = totalmoney_return[3] + numoftickets*25
-                        if (passenger_left_return[3] == 0):
-                            passenger_left_return[3] = "Closed"
-                else:
-                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                purchasedticket = False
+                while (purchasedticket == False):
+                    wantsreturntime = input("When do you want to return from the top of the mountain?\n")
+                    wantsreturntime = wantsreturntime.strip()            
+                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed"):
+                        if (passenger_left_return[0]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[0] = passenger_left_return[0] - numoftickets
+                            totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
+                            if (passenger_left_return[0] == 0):
+                                passenger_left_return[0] = "Closed"
+                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
+                        if (passenger_left_return[1]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[1] = passenger_left_return[1] - numoftickets
+                            totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
+                            if (passenger_left_return[1] == 0):
+                                passenger_left_return[1] = "Closed"
+                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
+                        if (passenger_left_return[2]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[2] = passenger_left_return[2] - numoftickets
+                            totalmoney_return[2] = totalmoney_return[2] + numoftickets*25
+                            if (passenger_left_return[2] == 0):
+                                passenger_left_return[2] = "Closed"
+                    elif (wantsreturntime == "16:00" and passenger_left_return[3] != "Closed"):
+                        if (passenger_left_return[3]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[3] = passenger_left_return[3] - numoftickets
+                            totalmoney_return[3] = totalmoney_return[3] + numoftickets*25
+                            if (passenger_left_return[3] == 0):
+                                passenger_left_return[3] = "Closed"
+                    else:
+                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
                 
-            #Single
+
+
+            ################# Single #######################
             elif (numoftickets == 1):
                 
                 print ("Single ticket selected.")
-                wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
-                wantsdeparttime = wantsdeparttime.strip()
                 #Validate that tickets are available for departure
-                if (wantsdeparttime == "09:00" and passenger_left_departure[0] != "Closed"):
-                    if (passenger_left_departure[0]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[0] = passenger_left_departure[0] - numoftickets
-                        totalmoney_departure[0] = totalmoney_departure[0] + numoftickets*25
-                        if (passenger_left_departure[0] == 0):
-                            passenger_left_departure[0] = "Closed"
-                elif (wantsdeparttime == "11:00" and passenger_left_departure[1] !="Closed"):
-                    if (passenger_left_departure[1]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[1] = passenger_left_departure[1] - numoftickets
-                        totalmoney_departure[1] = totalmoney_departure[1] + numoftickets*25
-                        if (passenger_left_departure[1] == 0):
-                            passenger_left_departure[1] = "Closed"
-                elif (wantsdeparttime == "13:00" and passenger_left_departure[2] != "Closed"):
-                    if (passenger_left_departure[2]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[2] = passenger_left_departure[2] - numoftickets
-                        totalmoney_departure[2] = totalmoney_departure[2] + numoftickets*25
-                        if (passenger_left_departure[2] == 0):
-                            passenger_left_departure[2] = "Closed"
-                elif (wantsdeparttime == "15:00" and passenger_left_departure[3] != "Closed"):
-                    if (passenger_left_departure[3]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_departure[3] = passenger_left_departure[3] - numoftickets
-                        totalmoney_departure[3] = totalmoney_departure[3] + numoftickets*25
-                        if (passenger_left_departure[3] == 0):
-                            passenger_left_departure[3] = "Closed"
-                else:
-                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                purchasedticket = False
+                while (purchasedticket == False):
+                    wantsdeparttime = input("When do you want to go for departure to the top of the mountain?\n")
+                    wantsdeparttime = wantsdeparttime.strip()
+                    if (wantsdeparttime == "09:00" and passenger_left_departure[0] != "Closed"):
+                        if (passenger_left_departure[0]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[0] = passenger_left_departure[0] - numoftickets
+                            totalmoney_departure[0] = totalmoney_departure[0] + numoftickets*25
+                            if (passenger_left_departure[0] == 0):
+                                passenger_left_departure[0] = "Closed"
+                    elif (wantsdeparttime == "11:00" and passenger_left_departure[1] !="Closed"):
+                        if (passenger_left_departure[1]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[1] = passenger_left_departure[1] - numoftickets
+                            totalmoney_departure[1] = totalmoney_departure[1] + numoftickets*25
+                            if (passenger_left_departure[1] == 0):
+                                passenger_left_departure[1] = "Closed"
+                    elif (wantsdeparttime == "13:00" and passenger_left_departure[2] != "Closed"):
+                        if (passenger_left_departure[2]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[2] = passenger_left_departure[2] - numoftickets
+                            totalmoney_departure[2] = totalmoney_departure[2] + numoftickets*25
+                            if (passenger_left_departure[2] == 0):
+                                passenger_left_departure[2] = "Closed"
+                    elif (wantsdeparttime == "15:00" and passenger_left_departure[3] != "Closed"):
+                        if (passenger_left_departure[3]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_departure[3] = passenger_left_departure[3] - numoftickets
+                            totalmoney_departure[3] = totalmoney_departure[3] + numoftickets*25
+                            if (passenger_left_departure[3] == 0):
+                                passenger_left_departure[3] = "Closed"
+                    else:
+                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
                 #Return time
-                wantsreturntime = input("When do you want to return from the top of the mountain?\n")
-                wantsreturntime = wantsreturntime.strip()
                 #Validate that tickets are available for return
-                if (passenger_left_return[0]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[0] = passenger_left_return[0] - numoftickets
-                        totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
-                        if (passenger_left_return[0] == 0):
-                            passenger_left_return[0] = "Closed"
-                elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
-                    if (passenger_left_return[1]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[1] = passenger_left_return[1] - numoftickets
-                        totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
-                        if (passenger_left_return[1] == 0):
-                            passenger_left_return[1] = "Closed"
-                elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
-                    if (passenger_left_return[2]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[2] = passenger_left_return[2] - numoftickets
-                        totalmoney_return[2] = totalmoney_return[2] + numoftickets*25
-                        if (passenger_left_return[2] == 0):
-                            passenger_left_return[2] = "Closed"
-                elif (wantsreturntime == "16:00" and passenger_left_return[3] != "Closed"):
-                    if (passenger_left_return[3]>=numoftickets):
-                        print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
-                        purchasesuccess = True
-                        passenger_left_return[3] = passenger_left_return[3] - numoftickets
-                        totalmoney_return[3] = totalmoney_return[3] + numoftickets*25
-                        if (passenger_left_return[3] == 0):
-                            passenger_left_return[3] = "Closed"
-                else:
-                    print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                purchasedticket = False
+                while (purchasedticket == False):
+                    wantsreturntime = input("When do you want to return from the top of the mountain?\n")
+                    wantsreturntime = wantsreturntime.strip()
+                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed"):
+                        if (passenger_left_return[0]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[0] = passenger_left_return[0] - numoftickets
+                            totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
+                            if (passenger_left_return[0] == 0):
+                                passenger_left_return[0] = "Closed"
+                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
+                        if (passenger_left_return[1]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[1] = passenger_left_return[1] - numoftickets
+                            totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
+                            if (passenger_left_return[1] == 0):
+                                passenger_left_return[1] = "Closed"
+                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
+                        if (passenger_left_return[2]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[2] = passenger_left_return[2] - numoftickets
+                            totalmoney_return[2] = totalmoney_return[2] + numoftickets*25
+                            if (passenger_left_return[2] == 0):
+                                passenger_left_return[2] = "Closed"
+                    elif (wantsreturntime == "16:00" and passenger_left_return[3] != "Closed"):
+                        if (passenger_left_return[3]>=numoftickets):
+                            print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
+                            purchasesuccess = True
+                            purchasedticket = True
+                            passenger_left_return[3] = passenger_left_return[3] - numoftickets
+                            totalmoney_return[3] = totalmoney_return[3] + numoftickets*25
+                            if (passenger_left_return[3] == 0):
+                                passenger_left_return[3] = "Closed"
+                    else:
+                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
             
             else:
                 #Validation failed
