@@ -28,12 +28,22 @@ print("")
 wants = "abc"
 numoftickets = 0
 validcheck = True
-wants = input("Do you want to purchase some train tickets [Yes/No]?\n")
+# wants = input("Do you want to purchase some train tickets [Yes/No]?\n")
 
 while True:
+    wants = input("Do you want to purchase some train tickets [Yes/No]?\n")
     if (wants[0] == "Y" or wants[0] == "y"):
             #Wants tickets
-            numoftickets = int(input("How many train tickets do you want to purchase?\n"))
+            numoftickets = input("How many train tickets do you want to purchase?\n")
+            
+            #Validation that number was entered
+            if (numoftickets.isnumeric()):
+                numoftickets = int(numoftickets)
+            else:
+                print ("Please enter a number, properly next time\nSo I'm restarting the questions for you")
+                validcheck = True
+                continue
+
             if (numoftickets > 1):
                 #Group
                 print ("Alright giving you a group ticket.")
