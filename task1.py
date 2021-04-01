@@ -40,9 +40,12 @@ while (validcheck == True):
             numoftickets = numoftickets.strip() #Get rid of whitespaces (tabs and spaces) to prevent problems with Yes detection
             #Validation that number was entered
             if (numoftickets.isnumeric()):
+                x = 1
+            if (x == 1 and int(numoftickets) <= 480):
+                
                 numoftickets = int(numoftickets)
             else:
-                print ("Please enter a number, properly next time\nSo I'm restarting the questions for you")
+                print ("Please enter a number, in a reasonable ticket availablity range, properly next time\nSo I'm restarting the questions for you")
                 validcheck = True
                 continue
             
@@ -101,7 +104,7 @@ while (validcheck == True):
                 while (purchasedticket == False):
                     wantsreturntime = input("When do you want to return from the top of the mountain?\n")
                     wantsreturntime = wantsreturntime.strip()            
-                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed"):
+                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed" and wantsdeparttime != "11:00" and wantsdeparttime != "13:00" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[0]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -110,7 +113,7 @@ while (validcheck == True):
                             totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
                             if (passenger_left_return[0] == 0):
                                 passenger_left_return[0] = "Closed"
-                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
+                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed" and wantsdeparttime != "13:00" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[1]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -119,7 +122,7 @@ while (validcheck == True):
                             totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
                             if (passenger_left_return[1] == 0):
                                 passenger_left_return[1] = "Closed"
-                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
+                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[2]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -195,7 +198,7 @@ while (validcheck == True):
                 while (purchasedticket == False):
                     wantsreturntime = input("When do you want to return from the top of the mountain?\n")
                     wantsreturntime = wantsreturntime.strip()
-                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed"):
+                    if (wantsreturntime == "10:00" and passenger_left_return[0] != "Closed" and wantsdeparttime != "11:00" and wantsdeparttime != "13:00" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[0]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -204,7 +207,7 @@ while (validcheck == True):
                             totalmoney_return[0] = totalmoney_return[0] + numoftickets*25
                             if (passenger_left_return[0] == 0):
                                 passenger_left_return[0] = "Closed"
-                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed"):
+                    elif (wantsreturntime == "12:00" and passenger_left_return[1] != "Closed" and wantsdeparttime != "13:00" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[1]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -213,7 +216,7 @@ while (validcheck == True):
                             totalmoney_return[1] = totalmoney_return[1] + numoftickets*25
                             if (passenger_left_return[1] == 0):
                                 passenger_left_return[1] = "Closed"
-                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed"):
+                    elif (wantsreturntime == "14:00" and passenger_left_return[2] != "Closed" and wantsdeparttime != "15:00"):
                         if (passenger_left_return[2]>=numoftickets):
                             print ("\033[1;32;40mDeparture tickets successfully purchased\033[0m")
                             purchasesuccess = True
@@ -232,7 +235,7 @@ while (validcheck == True):
                             if (passenger_left_return[3] == 0):
                                 passenger_left_return[3] = "Closed"
                     else:
-                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\033[0m")
+                        print ("\033[1;31;40mDeparture ticket purchase failed, either due to one of the reasons below:\n•Not enough tickets available for that time slot\n•You entered such a time slot that does not exist\n•Chosen return time is before the departure time, which is impossible\n\033[0m")
             
             else:
                 #Validation failed
